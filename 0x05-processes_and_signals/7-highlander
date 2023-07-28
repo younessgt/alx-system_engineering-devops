@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#  Bash script that displays To infinity and beyond indefinitely
+# catch a signal and then execute the invincible function
+
+function invincible_f {
+
+	echo "I am invincible!!!"
+}
+trap invincible_f SIGTERM
+
+i=1
+
+while [ $i -gt 0 ]
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
+
+

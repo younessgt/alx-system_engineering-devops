@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# signal sender
+pid=$(pgrep -f "7-highlander")
+
+kill -TERM "$pid"
