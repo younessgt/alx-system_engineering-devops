@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Bash script that resolve the ip address of localhost and facebook.com
+# localhost from 127.0.0.1 to 127.0.0.2
+# facebook.com from 157.240.11.35 to 8.8.8.8
+
+# first we should do a backup to the hosts file using .bak
+# first sed is for substitution operation
+sed -i.bak "s/127.0.0.1/127.0.0.2/" /etc/hosts
+# second sed is for append operation
+sed -i "/127.0.0.2/ a 8.8.8.8\tfacebook.com" /etc/hosts
