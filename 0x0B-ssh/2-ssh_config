@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# ssh configuration file (/.ssh/config)
+# instead of connecting using : ssh -i ~/.ssh/school ubuntu@3.83.253.230
+# now we use just: ssh ubuntu-web 
+
+Host ubuntu-web
+	Hostname 3.83.253.230
+	User ubuntu
+	PasswordAuthentication no
+	IdentityFile ~/.ssh/school
