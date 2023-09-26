@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Configure Nginx server to have a custom 404 page that contains the string Ceci n'est pas une page.
+
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo chmod 666 /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo chmod 666 /etc/nginx/sites-available/default
+file_to_config="/etc/nginx/sites-available/default"
+sudo touch /var/www/html/404.html
+sudo chmod 666 /var/www/html/404.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+text_in_file=$(mktemp)
+echo -e "\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t}" >> "$text_in_file"
+sudo sed -i "/listen 80 default_server/r $text_in_file" "$file_to_config"
+sudo rm "$text_in_file"
+sudo ufw allow 'Nginx HTTP'
+service nginx restart
