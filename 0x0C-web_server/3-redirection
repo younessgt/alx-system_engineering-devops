@@ -8,10 +8,8 @@ sudo chmod 666 /var/www/html/index.nginx-debian.html
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 sudo chmod 666 /etc/nginx/sites-available/default
 file_to_config="/etc/nginx/sites-available/default"
-block_in_file=$(mktemp)
-echo -e "\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}" >> "$block_in_file"
-sudo sed -i "/^[[:space:]]*server {/r $block_in_file" "$file_to_config"
-sudo rm "$block_in_file"
+block_text="\\\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}"
+sudo sed -i "42i $block_text" "$file_to_config"
 # after this changes u can reload the web server to see the changes using sudo service nginx reload
 sudo ufw allow 'Nginx HTTP'
 service nginx restart
