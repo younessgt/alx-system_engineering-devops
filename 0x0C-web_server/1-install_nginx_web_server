@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # installing Nginx web-server
 
-sudo apt get update
+sudo apt-get update
 sudo apt-get install -y nginx
 # given the access to read and write on the file
 sudo chmod 666 /var/www/html/index.nginx-debian.html
@@ -10,6 +10,6 @@ echo "Hello World!" > /var/www/html/index.nginx-debian.html
 # To check we use sudo ufw status
 # To enable it sudo ufw enable and sudo ufw disable to disable it
 # So right now we should add a rule that give access to all externel traffic to # have access to our nginx web server
-sudo ufw "Nginx HTTP" # or we can use sudo ufw 80
+sudo ufw allow "Nginx HTTP" # or we can use sudo ufw allow 80
 # Starting the Nginx web server
 service nginx start
