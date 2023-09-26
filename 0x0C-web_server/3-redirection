@@ -14,4 +14,4 @@ sudo sed -i "/^[[:space:]]*server {/r $block_in_file" "$file_to_config"
 sudo rm "$block_in_file"
 # after this changes u can reload the web server to see the changes using sudo service nginx reload
 sudo ufw allow 'Nginx HTTP'
-service nginx start
+service nginx restart
