@@ -11,7 +11,7 @@ sudo touch /var/www/html/404.html
 sudo chmod 666 /var/www/html/404.html
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 text_in_file=$(mktemp)
-echo -e "\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t}" >> "$text_in_file"
+echo -e "\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t}\n" >> "$text_in_file"
 sudo sed -i "/listen 80 default_server/r $text_in_file" "$file_to_config"
 sudo rm "$text_in_file"
 sudo ufw allow 'Nginx HTTP'
