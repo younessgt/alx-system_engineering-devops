@@ -24,10 +24,10 @@ file_line { '301':
   line  => '    location /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}',
 }
 
-file_line { 'add_header':
-  path  => '/etc/nginx/sites-available/default',
-  after => 'listen 80 default_server;',
-  line  => "         add_header X-Served-By \"${hostname}\";",
+exec { 'header':
+
+command  => 'line_to_ad="\\\tadd_header X-Served-By \$hostname;\n" $$ sudo sed -i "23i $line_to_ad" /etc/nginx/sites-available/default',
+provider => shell,
 }
 
 exec { 'restart server':
