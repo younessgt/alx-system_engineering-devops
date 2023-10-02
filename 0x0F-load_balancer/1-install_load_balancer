@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Bash script to install HAproxy and configure it to send traffic to web1 and web2
+
+sudo apt-get update
+sudo apt install -y haproxy
+
+sudo chmod 666 /etc/haproxy/haproxy.cfg
+file="/etc/haproxy/haproxy.cfg"
+text_to_add="backend backend_web\n\tserver 371106-web-01 18.235.249.72:80 check\n\tserver 371106-web-02 34.239.254.179:80 check\nfrontend fontend_web\n\tbind *:80\n\tdefault_backend backend_web"
+
+sudo sed -i "20i $text_to_add" "$file"
+
+sudo systemctl enable haproxy
+
+# we can check if there is no syntax error on haproxy.cfg by using sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+
+sudo systemctl restart haproxy
