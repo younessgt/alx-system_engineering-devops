@@ -11,7 +11,7 @@ file="/etc/haproxy/haproxy.cfg"
 text_to_add="
 frontend fron_web
         bind *:80
-		mode http
+        mode http
         default_backend back_web
 
 backend back_web
