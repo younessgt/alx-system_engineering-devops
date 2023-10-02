@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # Bash script to Configure the web1 and web2 + adding a custom Nginx response header to track
 # which web server  is answering our HTTP requests
 
