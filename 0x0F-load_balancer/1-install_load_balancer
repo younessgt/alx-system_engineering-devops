@@ -2,7 +2,7 @@
 # Bash script to install HAproxy and configure it to send traffic to web1 and web2
 
 sudo apt-get update
-sudo apt install -y haproxy
+sudo apt-get install -y haproxy
 
 sudo chmod 666 /etc/haproxy/haproxy.cfg
 file="/etc/haproxy/haproxy.cfg"
