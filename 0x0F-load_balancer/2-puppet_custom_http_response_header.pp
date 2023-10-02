@@ -27,7 +27,7 @@ file_line { '301':
 file_line { 'add_header':
   path  => '/etc/nginx/sites-available/default',
   after => 'listen 80 default_server;',
-  line  => "    add_header X-Served-By \"${hostname}\";",
+  line  => "        add_header X-Served-By \"${hostname}\";",
 }
 
 exec { 'restart server':
