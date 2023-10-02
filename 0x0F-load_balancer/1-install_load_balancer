@@ -6,9 +6,20 @@ sudo apt-get install -y haproxy
 
 sudo chmod 666 /etc/haproxy/haproxy.cfg
 file="/etc/haproxy/haproxy.cfg"
-text_to_add="backend backend_web\n\tserver 371106-web-01 18.235.249.72:80 check\n\tserver 371106-web-02 34.239.254.179:80 check\nfrontend fontend_web\n\tbind *:80\n\tmode hhtp\n\tdefault_backend backend_web"
 
-sudo sed -i "20i $text_to_add" "$file"
+
+text_to_add="
+frontend fron_web
+        bind *:80
+		mode http
+        default_backend my_web_backend
+
+backend back_web
+        server 371106-web-01 18.235.249.72:80 check
+        server 371106-web-02 34.239.254.179:80 check"
+
+# by default the algorithm is set to roundrobin if we want to set another algo we add to backend "balance algo_name"
+echo "$text_to_add" >> "$file"
 
 
 # we can check if there is no syntax error on haproxy.cfg by using sudo haproxy -c -f /etc/haproxy/haproxy.cfg
