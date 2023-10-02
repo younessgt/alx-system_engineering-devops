@@ -26,7 +26,7 @@ file_line { '301':
 
 exec { 'header':
 
-command  => 'line_to_ad="\\\tadd_header X-Served-By \$hostname;\n" && sudo sed -i "23i $line_to_ad" /etc/nginx/sites-available/default',
+command  => 'line_to_ad="\\\tadd_header X-Served-By $(hostname);" && sudo sed -i "42i $line_to_ad" /etc/nginx/sites-available/default',
 provider => shell,
 }
 
