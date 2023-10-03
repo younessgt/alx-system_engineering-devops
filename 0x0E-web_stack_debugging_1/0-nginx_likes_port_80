@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Script to find whats keeping the Ubuntu container's Nginx installation from listening on port 80
+# first check if Nginx is running by "service nginx status"
+# try to run it "servive nging start " if not working check the 
+# config file and see what port is configured to listening on
+# check the conflict port "netstat -lpdn" or "lsof -i :port_number" then you have two choice first kill the process that is taken the port of course if not need it 
+# or change the port to another in the Nginx config file
+# we will change the port in our case
+
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+service nginx restart
