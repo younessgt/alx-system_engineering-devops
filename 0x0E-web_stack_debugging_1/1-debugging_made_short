@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Task0 plus after we do a curl 0:80 the status of nginx service should be not running
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+service nginx restart
+pkill -o nginx # killing the oldest Nginx worker process

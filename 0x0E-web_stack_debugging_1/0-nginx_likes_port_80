@@ -5,7 +5,7 @@
 # config file and see what port is configured to listening on
 # check the conflict port "netstat -lpdn" or "lsof -i :port_number" then you have two choice first kill the process that is taken the port of course if not need it 
 # or change the port to another in the Nginx config file
-# we will change the port in our case
+# In our we will change the port
 
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
