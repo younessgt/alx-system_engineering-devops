@@ -7,5 +7,7 @@
 # or change the port to another in the Nginx config file
 # In our we will change the port
 
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-service nginx restart
+# sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
