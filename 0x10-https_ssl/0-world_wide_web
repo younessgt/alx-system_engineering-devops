@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Bash script that display information about subdomains """
+
+main_func () {
+
+	result=$(dig "$2"."$1" | awk '/ANSWER SECTION/ {getline; print}')
+	ip_address=$(echo "$result" | awk '{print $5}')
+	record=$(echo "$result" | awk '{print $4}')
+
+	echo "The subdomain $2 is a $record record and points to $ip_address"
+}
+
+if [ -z "$2" ]; then
+
+	arr=("www" "lb-01" "web-01" "web-02")
+
+	for sub_domain in "${arr[@]}"; do
+		main_func "$1" "$sub_domain"
+	done
+else
+	main_func "$1" "$2"
+fi
