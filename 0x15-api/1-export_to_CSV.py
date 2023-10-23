@@ -12,8 +12,20 @@ if __name__ == "__main__":
     for emp in response.json():
         if emp.get("id") == int(argv[1]):
             employe_name = emp.get("username")
+    """ to optimaze u can use
+    response = requests.get("https://jsonplaceholder.typicode.com/users/{}"
+    .format[argv[1]])
+
+    employe_name = response.json().get("username") """
 
     response2 = requests.get("https://jsonplaceholder.typicode.com/todos")
+
+    """ u can also use here to simplify
+     response2 = requests.get("https://jsonplaceholder.typicode.com
+     /todos?userId={}".format(argv[1]))
+
+    to get just data for that specific user
+     """
     total_task = 0
     num_of_task_done = 0
     list_task_title = []
