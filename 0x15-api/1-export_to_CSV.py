@@ -11,7 +11,7 @@ if __name__ == "__main__":
     response = requests.get("https://jsonplaceholder.typicode.com/users")
     for emp in response.json():
         if emp.get("id") == int(argv[1]):
-            employe_name = emp.get("name")
+            employe_name = emp.get("username")
 
     response2 = requests.get("https://jsonplaceholder.typicode.com/todos")
     total_task = 0
