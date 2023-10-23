@@ -31,7 +31,8 @@ if __name__ == "__main__":
                 list_task_title.append(todo.get("title"))
 
     with open(file_name, mode="w", newline="") as f:
-        writer = csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+        writer = csv.writer(f, delimiter=',', quotechar='"',
+                            quoting=csv.QUOTE_ALL)
 
         for row in data:
             writer.writerow(row)
