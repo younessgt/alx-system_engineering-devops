@@ -8,7 +8,7 @@ def top_ten(subreddit):
     """ Displaying the titles of the first 10 hot posts listed
     for a given subreddit"""
 
-    url = "https://www.reddit.com/r/{}/hot.json?limit=9".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
     headers = {"User-Agent": "RedditTestApi/1.0"}
 
     response = requests.get(url, headers=headers, allow_redirects=False)
