@@ -11,7 +11,6 @@ def recurse(subreddit, hot_list=[], after=""):
     url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(subreddit,
                                                                  after)
     headers = {"User-Agent": "RedditApiTest/1.0"}
-
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     if response.status_code == 200:
@@ -27,5 +26,3 @@ def recurse(subreddit, hot_list=[], after=""):
             return hot_list
         else:
             return None
-    else:
-        return None
