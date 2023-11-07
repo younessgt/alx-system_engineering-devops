@@ -6,8 +6,9 @@ from collections import Counter
 
 
 def count_words(subreddit, word_list, after="", counter=None):
-    """ recursive function that  returns a list containing the titles
-    of all hot articles for a given subreddit"""
+    """ recursive function that queries the Reddit API,
+    parses the title of all hot articles,
+    and prints a sorted count of given keywords """
 
     url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(subreddit,
                                                                  after)
@@ -44,3 +45,5 @@ def count_words(subreddit, word_list, after="", counter=None):
         else:
             for word, count in sorted(counter.most_common()):
                 print("{}: {}".format(word, count))
+    else:
+        return
