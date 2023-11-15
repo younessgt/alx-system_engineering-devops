@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 # Bash script that reload Gunicorn in a graceful way.
 
-kill -HUP $(ps aux | grep gunicorn | awk '{print $2}' | sort -n | head -n 1)
+kill -HUP "$(ps aux | grep gunicorn | awk '{print $2}' | sort -n | head -n 1)"
