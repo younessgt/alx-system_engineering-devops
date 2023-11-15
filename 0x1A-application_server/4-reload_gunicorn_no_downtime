@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 # Bash script that reload Gunicorn in a graceful way.
-kill -HUP "$(pgrep -o -f gunicorn)"
+GUNI_PID=$(pgrep -o -f gunicorn)
+
+if [ -z "$GUNI_PID" ]; then
+	exit 1
+else
+	kill -HUP "$GUNI_PID"
+fi
