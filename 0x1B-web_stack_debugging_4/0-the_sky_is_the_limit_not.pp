@@ -5,7 +5,7 @@ exec {'replace 15 with 4096':
   path    => ['/bin', '/usr/bin'],
 }
 
-exec {'restart nginx':
+-> exec {'restart nginx':
   command => 'service nginx restart',
   path    => ['/bin', '/usr/bin'],
 }
